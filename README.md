@@ -13,3 +13,5 @@ Accessible from https://virtserver.swaggerhub.com/test26585/messages/3.0
   
   Generated using OPENAPI with YAML and Swagger tools.
   Python-Flask server.
+
+  See python-flask-server-generated/README.md to run the server.

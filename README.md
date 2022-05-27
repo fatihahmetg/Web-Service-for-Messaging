@@ -11,5 +11,5 @@ message (in hexadecimal format)
 Accessible from https://virtserver.swaggerhub.com/test26585/messages/3.0
   
   
-  Generated using OPENAPI and Swagger tools.
+  Generated using OPENAPI with YAML and Swagger tools.
   Python-Flask server.

@@ -15,3 +15,13 @@ Accessible from https://virtserver.swaggerhub.com/test26585/messages/3.0
   Python-Flask server.
 
   See python-flask-server-generated/README.md to run the server.
+  
+  
+## How can you scale your implementation?
+  Multithreaded architechture can be used instead of a single thread.
+  
+## How did you deploy this application?
+  I used Swagger's virtual server for this application. 
+  
+## How can you improve this process and make it easy to maintain?
+  I will use CI/CD pipelines and use several containers.

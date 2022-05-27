@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  title: Web Service with Two Endpoints
+  description: Web service that can hash a message with two endpoints.
+  version: '3.0'
+servers:
+- url: //localhost:8080/
+- description: SwaggerHub API Auto Mocking
+  url: https://virtserver.swaggerhub.com/test26585/messages/3.0
+paths:
+  /messages:
+    post:
+      tags:
+      - messages
+      summary: takes a message (a string) as a POST and returns the SHA256 hash digest
+        of that message (in hexadecimal format)
+      operationId: add_message
+      requestBody:
+        description: message that will be stored
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+        required: true
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hash'
+      x-openapi-router-controller: swagger_server.controllers.messages_controller
+  /messages/{hash}:
+    get:
+      tags:
+      - messages
+      summary: Find the message by hash
+      description: Returns the message
+      operationId: get_msg_by_hash
+      parameters:
+      - name: hash
+        in: path
+        description: Hash of the message to return
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        "404":
+          description: Message not found
+      x-openapi-router-controller: swagger_server.controllers.messages_controller
+components:
+  schemas:
+    Hash:
+      required:
+      - digest
+      type: object
+      properties:
+        digest:
+          type: string
+          example: HASH_CODE-2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
+      example:
+        digest: HASH_CODE-2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
+    Message:
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+          example: hello
+      example:
+        message: hello
